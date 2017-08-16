@@ -44,17 +44,17 @@ And these three arguments will be encoded as Uri query, and can be refered to [E
 
 ### Message options
 This section provides some options of CoAP message.
-- **Type**: the 'T' field in CoAP header, can either be CON or NON.
-- **Method**: the 'Code' field in CoAP header, only 'GET' is allowed to do subscribing.
-- **Message ID**: the 'Message ID' field in CoAP header, if blank, the sampler will generate automatically.
-- **Token**: the 'Token' field in CoAP header, if blank, the sampler will generate automatically. And the maximum length of token is 8 byte.
+- **Type**: represents the 'T' field in CoAP header, can either be CON or NON.
+- **Method**: represents the 'Code' field in CoAP header, only 'GET' is allowed to do subscribing.
+- **Message ID**: represents the 'Message ID' field in CoAP header, if blank, the sampler will generate automatically.
+- **Token**: represents the 'Token' field in CoAP header, if blank, the sampler will generate automatically. And the maximum length of token is 8 byte.
 - **Resource Path(Topic)**: the 'Uri-Path' option in CoAP message, the default value is '/mqtt/coap_test_topic'. Note that the prefix '/mqtt' is mandatory by CoAP server on EMQ, and the 'coap_test_topic' is the topic to be subscribed.
 
 ### Sub options
-This section provides some specific options in subscribing.
+This section provides some specific options related to subscription.
 - **Sample on**: It controls the frequency to collect test statistics and give out the sample result. 
 
-  The default value is '**elapsed with specified time(ms)**', which means a sub sampler will wait a mount of time(ms) specified in next text field (default is 1000ms). And during this period, all the received messages will be averagely summarized and recorded. Then after this period, the sample result will be given out. 
+  The default value is '**elapsed with specified time(ms)**', which means a sub sampler will wait a mount of time(ms) specified in next text field (default is 1000ms) before finish running. And during this period, all the received messages will be averagely summarized and recorded. Then after this period, the sample result will be given out. 
 
   Another option is '**received number of message**', which means a sub sampler will wait till the specified number of messages are received, the number is set in next text field (default is 1). If you choose the 'received number of message', you must be aware that the sampler will keep waiting if no such a mount of messages can be received, especially in UDP communications.
 - **Debug response**: If checked, the received message will be print in response. It's recommended to enable it when you're debugging script.
