@@ -28,7 +28,7 @@ import net.xmeter.samplers.AbstractCoAPSampler;
 public class CoAPCommonUI  implements ChangeListener, ActionListener, CoAPConstants{
     private final JLabeledTextField serverAddr = new JLabeledTextField("Server name or IP:");
     private final JLabeledTextField serverPort = new JLabeledTextField("Port number:", 5);
-    private final JLabeledTextField timeout = new JLabeledTextField("Timeout(s):", 5);
+    //private final JLabeledTextField timeout = new JLabeledTextField("Timeout(s):", 5);
     
     private final JLabeledTextField userNameAuth = new JLabeledTextField("User name:");
     private final JLabeledTextField passwordAuth = new JLabeledTextField("Password:");
@@ -48,8 +48,8 @@ public class CoAPCommonUI  implements ChangeListener, ActionListener, CoAPConsta
     private static final String BROWSE1 = "browse1";
     private static final String BROWSE2 = "browse2";
     
-    public final JLabeledTextField clientIdPrefix = new JLabeledTextField("ClientId:", 8);
-    private JCheckBox clientIdSuffix = new JCheckBox("Add random suffix for ClientId");
+    public final JLabeledTextField clientIdPrefix = new JLabeledTextField("Client ID:", 8);
+    private JCheckBox clientIdSuffix = new JCheckBox("Add random suffix for Client ID");
     
     public JPanel createConnPanel() {
         JPanel con = new HorizontalPanel();
@@ -59,12 +59,12 @@ public class CoAPCommonUI  implements ChangeListener, ActionListener, CoAPConsta
         connPanel.add(serverAddr);
         connPanel.add(serverPort);
         
-        JPanel timeoutPannel = new HorizontalPanel();
-        timeoutPannel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Timeout"));
-        timeoutPannel.add(timeout);
+        //JPanel timeoutPannel = new HorizontalPanel();
+        //timeoutPannel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), "Timeout"));
+        //timeoutPannel.add(timeout);
 
         con.add(connPanel);
-        con.add(timeoutPannel);
+        //con.add(timeoutPannel);
         return con;
     }
     
@@ -212,7 +212,7 @@ public class CoAPCommonUI  implements ChangeListener, ActionListener, CoAPConsta
     public void configure(AbstractCoAPSampler sampler) {
         serverAddr.setText(sampler.getServer());
         serverPort.setText(sampler.getPort());
-        timeout.setText(sampler.getConnTimeout());
+        //timeout.setText(sampler.getConnTimeout());
         
         if(sampler.getProtocol().trim().indexOf(JMETER_VARIABLE_PREFIX) == -1){
             if(DEFAULT_PROTOCOL.equals(sampler.getProtocol())) {
@@ -248,7 +248,7 @@ public class CoAPCommonUI  implements ChangeListener, ActionListener, CoAPConsta
     public void setupSamplerProperties(AbstractCoAPSampler sampler) {
         sampler.setServer(serverAddr.getText());
         sampler.setPort(serverPort.getText());
-        sampler.setConnTimeout(timeout.getText());
+        //sampler.setConnTimeout(timeout.getText());
         sampler.setProtocol(protocols.getText());
         sampler.setDualSSLAuth(dualAuth.isSelected());
         sampler.setKeyStoreFilePath(certificationFilePath1.getText());
@@ -277,7 +277,7 @@ public class CoAPCommonUI  implements ChangeListener, ActionListener, CoAPConsta
         cksPassword.setText("");
         serverAddr.setText(DEFAULT_SERVER);
         serverPort.setText(DEFAULT_PORT);
-        timeout.setText(DEFAULT_CONN_TIME_OUT);
+        //timeout.setText(DEFAULT_CONN_TIME_OUT);
         userNameAuth.setText(DEFAULT_USERNAME);
         passwordAuth.setText(DEFAULT_PASSWORD);
         clientIdSuffix.setSelected(true);

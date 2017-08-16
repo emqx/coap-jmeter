@@ -41,7 +41,7 @@ public interface CoAPConstants {
     public static final String PAYLOAD_TYPE_HEX_STRING = "Hex string";
     public static final String PAYLOAD_TYPE_STRING = "String";
     
-    public static final String SAMPLE_ON_CONDITION_OPTION1 = "specified elapsed time (ms)";
+    public static final String SAMPLE_ON_CONDITION_OPTION1 = "elapsed with specified time (ms)";
     public static final String SAMPLE_ON_CONDITION_OPTION2 = "number of received messages";
     
     public static final int MAX_CLIENT_ID_LENGTH = 23;

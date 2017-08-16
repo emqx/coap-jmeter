@@ -209,7 +209,7 @@ public class CoAPPubSamplerUI extends AbstractSamplerGui implements CoAPConstant
         this.resourcePath.setText(DEFAULT_RESPURCE_PATH);
         
         this.timestamp.setSelected(false);      
-        this.payloadTypes.setSelectedIndex(0);
+        this.payloadTypes.setSelectedIndex(2);
         this.stringLength.setText(String.valueOf(DEFAULT_PAYLOAD_FIX_LENGTH));
         this.payloadTypes.setText("");
     }

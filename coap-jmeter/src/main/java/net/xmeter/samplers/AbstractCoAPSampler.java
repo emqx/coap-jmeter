@@ -22,7 +22,7 @@ public abstract class AbstractCoAPSampler extends AbstractSampler implements CoA
     public void setPort(String port) {
         setProperty(PORT, port);
     }
-
+/*
     public String getConnTimeout() {
         return getPropertyAsString(CONN_TIMEOUT, DEFAULT_CONN_TIME_OUT);
     }
@@ -30,7 +30,7 @@ public abstract class AbstractCoAPSampler extends AbstractSampler implements CoA
     public void setConnTimeout(String connTimeout) {
         setProperty(CONN_TIMEOUT, connTimeout);
     }
-
+*/
     public String getProtocol() {
         return getPropertyAsString(PROTOCOL, DEFAULT_PROTOCOL);
     }
