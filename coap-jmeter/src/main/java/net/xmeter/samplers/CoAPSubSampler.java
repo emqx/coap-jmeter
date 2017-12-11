@@ -21,7 +21,7 @@ import org.apache.jmeter.testelement.ThreadListener;
 //import org.apache.log.Priority;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.eclipse.californium.core.CaliforniumLogger;
+//import org.eclipse.californium.core.CaliforniumLogger;
 import org.eclipse.californium.core.CoapClient;
 import org.eclipse.californium.core.CoapHandler;
 import org.eclipse.californium.core.CoapResponse;
@@ -139,14 +139,6 @@ public class CoAPSubSampler extends AbstractCoAPSampler implements ThreadListene
                 query = "?c=" + clientId + "&u=" + getUserNameAuth() + "&p=" + getPasswordAuth();
 
                 resourcePath = getResourcePath();
-                
-                if(resourcePath.startsWith("/mqtt/")) {
-                    encodedResPath = "/mqtt/" + URLEncoder.encode(resourcePath.substring("/mqtt/".length()), "UTF-8");
-                } else if(resourcePath.startsWith("/ps/")) {
-                    encodedResPath = "/ps/" + URLEncoder.encode(resourcePath.substring("/ps/".length()), "UTF-8");
-                } else {
-                    encodedResPath = resourcePath;
-                }
 
                 coapClient = new CoapClient();
                 
@@ -171,7 +163,21 @@ public class CoAPSubSampler extends AbstractCoAPSampler implements ThreadListene
                 }
 
                 request.setURI(uri);
-                request.getOptions().clearUriPath().clearUriQuery().setUriPath(encodedResPath);
+                
+                if(resourcePath.startsWith("/mqtt/")) {
+                    //encodedResPath = "/mqtt/" + URLEncoder.encode(resourcePath.substring("/mqtt/".length()), "UTF-8");
+                    request.getOptions().addUriPath("/mqtt");
+                    request.getOptions().addUriPath(resourcePath.substring("/mqtt/".length()));
+                } else if(resourcePath.startsWith("/ps/")) {
+                    //encodedResPath = "/ps/" + URLEncoder.encode(resourcePath.substring("/ps/".length()), "UTF-8");
+                    request.getOptions().addUriPath("/ps");
+                    request.getOptions().addUriPath(resourcePath.substring("/ps/".length()));
+                } else {
+                    //encodedResPath = resourcePath;
+                    request.getOptions().addUriPath(resourcePath);
+                }
+
+                //request.getOptions().clearUriPath().clearUriQuery().setUriPath(encodedResPath);
                 request.getOptions().setUriQuery(query);
                 request.setObserve();
 

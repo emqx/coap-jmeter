@@ -18,7 +18,7 @@ import org.apache.jmeter.testelement.ThreadListener;
 //import org.apache.log.Priority;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.eclipse.californium.core.CaliforniumLogger;
+//import org.eclipse.californium.core.CaliforniumLogger;
 import org.eclipse.californium.core.CoapClient;
 import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.coap.MediaTypeRegistry;
@@ -104,12 +104,12 @@ public class CoAPPubSampler extends AbstractCoAPSampler implements ThreadListene
                     clientId = getClienIdPrefix();
                 }
 
-                uri = "coap://" + getServer() + ":" + getPort();
                 query = "?c=" + clientId + "&u=" + getUserNameAuth() + "&p=" + getPasswordAuth();
                 isFirstLoop = false;
                 coapClient = new CoapClient();
             }
-                
+
+            uri = "coap://" + getServer() + ":" + getPort();
             if(DEFAULT_PUB_METHOD_TYPE.equals(getMethodType())) {
                 request = Request.newPut();
             } else {
@@ -141,14 +141,18 @@ public class CoAPPubSampler extends AbstractCoAPSampler implements ThreadListene
             resourcePath = getResourcePath();
             
             if(resourcePath.startsWith("/mqtt/")) {
-                encodedResPath = "/mqtt/" + URLEncoder.encode(resourcePath.substring("/mqtt/".length()), "UTF-8");
+                //encodedResPath = "/mqtt/" + URLEncoder.encode(resourcePath.substring("/mqtt/".length()), "UTF-8");
+                request.getOptions().addUriPath("/mqtt");
+                request.getOptions().addUriPath(resourcePath.substring("/mqtt/".length()));
             } else if(resourcePath.startsWith("/ps/")) {
-                encodedResPath = "/ps/" + URLEncoder.encode(resourcePath.substring("/ps/".length()), "UTF-8");
+                //encodedResPath = "/ps/" + URLEncoder.encode(resourcePath.substring("/ps/".length()), "UTF-8");
+                request.getOptions().addUriPath("/ps");
+                request.getOptions().addUriPath(resourcePath.substring("/ps/".length()));
             } else {
-                encodedResPath = resourcePath;
+                //encodedResPath = resourcePath;
+                request.getOptions().addUriPath(resourcePath);
             }
-            //request.getOptions().clearUriPath().clearUriQuery().setUriPath(encodedResPath);
-            request.getOptions().setUriPath(encodedResPath);
+            //request.getOptions().setUriPath(encodedResPath);
             
             if (PAYLOAD_TYPE_RANDOM_STR_WITH_FIX_LEN.equals(getPayloadType())) {
                 payload = Util.generatePayload(Integer.parseInt(getPayloadLength()));
