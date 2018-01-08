@@ -252,7 +252,8 @@ public class CoAPSubSampler extends AbstractCoAPSampler implements ThreadListene
                 
                 //CoapObserveRelation relation = coapClient.observeAndWait(handler);
                 //coapClient.observeAndWait(handler);
-                coapClient.advanced(handler, request);
+                //coapClient.advanced(handler, request);
+                coapClient.observe(request, handler);
  /*               
                 String hostName = InetAddress.getLocalHost().getHostName();
                 String path = "/home/xmeter/DClogs/" + hostName + "_coapsubclient.log";
