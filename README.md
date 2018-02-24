@@ -74,3 +74,5 @@ This section provides some specific options related to subscription.
   + Random string with fixed length: the payload will be filled with random generated string. The 'Length' field means the payload string length in byte, the default value is 1024.
 
 - **Add timestamp in payload**: Add timestamp in the payload or not. If the checkbox is enabled, the timestamp records when the payload is assembled will be added at the beginning of the payload. Mostly it can be used together with **CoAP Sub sampler** to calculate message latency time.
+
+
