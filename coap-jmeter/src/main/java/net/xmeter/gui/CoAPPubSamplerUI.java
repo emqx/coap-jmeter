@@ -193,7 +193,7 @@ public class CoAPPubSamplerUI extends AbstractSamplerGui implements CoAPConstant
         sampler.setAddTimestamp(this.timestamp.isSelected());
         sampler.setPayloadType(this.payloadTypes.getText());
         sampler.setPayloadLength(this.stringLength.getText());
-        sampler.setPayload(this.payloadTypes.getText());
+        sampler.setPayload(this.sendPayload.getText());
     }
 
     @Override
