@@ -35,7 +35,7 @@ Note that the SSL protocol is not supported yet by this plugin.
 
 ### User authentication
 User can provide client ID, user name and password for authentication in CoAP server. 
-And these three arguments will be encoded as Uri query, and can be refered to [EMQ CoAP subscribe example](https://github.com/emqtt/emq-coap/blob/master/README.md#subscribe-example).
+And these three arguments will be encoded as Uri query, and can be refered to [EMQ CoAP subscribe example](https://github.com/emqx/emq-coap/blob/master/README.md#subscribe-example).
 - **Client ID**: the unique ID to distinguish a client, the default value is a prefix of 'coap_sub_'. And if you choose the 'Add random suffix for ClientId', the random generated suffix will be added.
 
 - **User name**: the username for authentication, the default value is coap_user.
